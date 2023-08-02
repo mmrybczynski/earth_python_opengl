@@ -9,8 +9,9 @@ from OpenGL.GL import *
 from OpenGL.GLUT import *
 from OpenGL.GLU import *
 from PIL.Image import *
+from OpenGL.GLUT import glutInit
 
-import sys,gc
+import sys
 
 
 ESCAPE = '\033'
@@ -102,7 +103,7 @@ def ReSizeGLScene(Width, Height):
   
 def DrawEarth():
     global Q1
-    glColor3f(1.0, 1.0, 1.0);
+    glColor3f(1.0, 1.0, 1.0)
     glBindTexture( GL_TEXTURE_2D, LoadTextures('earthmap.bmp') )
     
     Q1=gluNewQuadric()
@@ -113,14 +114,14 @@ def DrawEarth():
 	
     glPushMatrix()
     glTranslatef(0.0,0.0,4.0)			# Center The Cylinder
-    gluSphere(Q1,0.40,32,16) 
+    gluSphere(Q1,0.40*4,32,16)
     gluDeleteQuadric( Q1 )
     glPopMatrix()  
 
 def DrawMoon():
     global Q2
-    glColor3f(1.0, 1.0, 1.0);
-    glBindTexture( GL_TEXTURE_2D, LoadTextures('earthmap.bmp') )
+    glColor3f(1.0, 1.0, 1.0)
+    glBindTexture( GL_TEXTURE_2D, LoadTextures('moon.bmp') )
     
     Q2=gluNewQuadric()
     gluQuadricNormals(Q2, GL_SMOOTH)
@@ -129,8 +130,8 @@ def DrawMoon():
     glTexGeni(GL_T, GL_TEXTURE_GEN_MODE, GL_SPHERE_MAP)
 	
     glPushMatrix()
-    glTranslatef(0.0,0.0,4.0)			# Center The Cylinder
-    gluSphere(Q2,0.20,32,16) 
+    glTranslatef(0.0,0.0,6.0)			# Center The Cylinder
+    gluSphere(Q2,0.20*4,32,16)
     gluDeleteQuadric( Q2 )
     glPopMatrix() 
 
